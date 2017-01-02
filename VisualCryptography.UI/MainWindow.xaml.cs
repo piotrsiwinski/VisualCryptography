@@ -45,7 +45,7 @@ namespace VisualCryptography.UI
                 return;
             }
             var original = (OriginalImage.Source as BitmapImage)?.ConvertToBitmap();
-            var result = _algorithm.EncryptedBitmaps(original);
+            var result = _algorithm.EncryptBitmap(original);
 
             FirstImage.Source = result[0].ToImageSource();
             SecondImage.Source = result[1].ToImageSource();
@@ -90,11 +90,13 @@ namespace VisualCryptography.UI
                     Title = "Select a picture",
                     Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
                          "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png"
+                         "Portable Network Graphic (*.png)|*.png",
+                    DefaultExt = "jpg"
                 };
 
                 if (saveFileDialog.ShowDialog() != true) return;
                 firstImageBitmap?.Save(saveFileDialog.FileName);
+                if (saveFileDialog.ShowDialog() != true) return;
                 secondImageBitmap?.Save(saveFileDialog.FileName);
             }
             catch (Exception exception)
