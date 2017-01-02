@@ -39,6 +39,11 @@ namespace VisualCryptography.UI
 
         private void EncryptImage_Click(object sender, RoutedEventArgs e)
         {
+            if (OriginalImage.Source == null)
+            {
+                MessageBox.Show("Proszę wybrać obrazek");
+                return;
+            }
             var original = (OriginalImage.Source as BitmapImage)?.ConvertToBitmap();
             var result = _algorithm.EncryptedBitmaps(original);
 

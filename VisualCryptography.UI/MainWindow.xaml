@@ -17,11 +17,11 @@
                             Width="100" Height="26" Content="Otwórz obraz" Click="OpenOriginalImageButton_OnClick"/>
                 </StackPanel>
                 
-                <Image x:Name="OriginalImage"/>
+                <Image x:Name="OriginalImage" MaxHeight="480" MaxWidth="320" />
                 <Label Content="Szyfrowanie" HorizontalAlignment="Center" FontSize="16"/>
                 <Button x:Name="EncryptImage" Width="100" Height="26" HorizontalAlignment="Left" Margin="0,20,0,20" Content="Zaszyfruj obraz" Click="EncryptImage_Click"/>
-                <Image x:Name="FirstImage" Margin="0, 20, 0, 20"/>
-                <Image x:Name="SecondImage" Margin="0, 20, 0, 20"/>
+                <Image x:Name="FirstImage" Margin="0, 20, 0, 20" MaxHeight="480" MaxWidth="320" />
+                <Image x:Name="SecondImage" Margin="0, 20, 0, 20" MaxHeight="480" MaxWidth="320"/>
                 <Button x:Name="SaveDecryptedImagesToFile" IsEnabled="False" Content="Zapisz do pliku" Height="26" Width="100" HorizontalAlignment="Left" Margin="0, 20, 0, 20" Click="SaveDecryptedImagesToFile_Click"/>
             </StackPanel>
         </ScrollViewer>

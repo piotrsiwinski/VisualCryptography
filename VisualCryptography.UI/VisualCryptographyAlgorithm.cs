@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Documents;
 
@@ -20,7 +21,21 @@ namespace VisualCryptography.UI
 
         public Bitmap[] EncryptedBitmaps(Bitmap bitmap)
         {
-            return new [] {bitmap, bitmap};
+            Bitmap firstEncryptedBitmap = new Bitmap(bitmap.Width * 2, bitmap.Height);
+            Bitmap secondEncryptedBitmap = new Bitmap(bitmap.Width * 2, bitmap.Height);
+
+            for (int i = 0; i < bitmap.Width; i++)
+            {
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    var pixel = bitmap.GetPixel(i, j);
+                }
+            }
+
+
+
+
+            return new[] {firstEncryptedBitmap, secondEncryptedBitmap};
         }
 
     }
