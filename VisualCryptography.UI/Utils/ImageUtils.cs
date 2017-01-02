@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media.Imaging;
 
@@ -16,5 +17,21 @@ namespace VisualCryptography.UI.Utils
                 return new Bitmap(bitmap);
             }
         }
+
+        public static BitmapImage ToImageSource(this Bitmap bitmap)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                bitmap.Save(memoryStream, ImageFormat.Bmp);
+                memoryStream.Position = 0L;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                return bitmapImage;
+            }
+        }
+
     }
 }

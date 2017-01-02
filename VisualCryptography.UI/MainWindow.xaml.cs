@@ -10,12 +10,14 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using VisualCryptography.UI.Utils;
+using Color = System.Windows.Media.Color;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace VisualCryptography.UI
 {
@@ -25,10 +27,28 @@ namespace VisualCryptography.UI
     public partial class MainWindow : Window
     {
         private string _originalImagePath;
+        private const int GenerateImageCount= 2;
+        private Bitmap[] _encryptedBitmaps;
+        private VisualCryptographyAlgorithm _algorithm;
 
         public MainWindow()
         {
             InitializeComponent();
+            _algorithm = new VisualCryptographyAlgorithm();
+        }
+
+        private void EncryptImage_Click(object sender, RoutedEventArgs e)
+        {
+            var original = (OriginalImage.Source as BitmapImage)?.ConvertToBitmap();
+            var result = _algorithm.EncryptedBitmaps(original);
+
+            FirstImage.Source = result[0].ToImageSource();
+            SecondImage.Source = result[1].ToImageSource();
+
+            if (FirstImage.Source != null && SecondImage.Source != null)
+            {
+                SaveDecryptedImagesToFile.IsEnabled = true;
+            }
         }
 
         private void OpenOriginalImageButton_OnClick(object sender, RoutedEventArgs e)
@@ -46,8 +66,6 @@ namespace VisualCryptography.UI
                 if (openFileDialog.ShowDialog() != true) return;
                 _originalImagePath = openFileDialog.FileName;
                 OriginalImage.Source = new BitmapImage(new Uri(_originalImagePath));
-                FirstImage.Source = new BitmapImage(new Uri(_originalImagePath));
-                SecondImage.Source = new BitmapImage(new Uri(_originalImagePath));
             }
             catch (Exception exception)
             {
@@ -80,12 +98,6 @@ namespace VisualCryptography.UI
             }
         }
 
-        private void EncryptImage_Click(object sender, RoutedEventArgs e)
-        {
-            if (FirstImage.Source != null && SecondImage.Source != null)
-            {
-                SaveDecryptedImagesToFile.IsEnabled = true;
-            }
-        }
+        
     }
 }
