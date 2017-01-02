@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualCryptography.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="1024" Width="768">
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" >
+                <Label Content="Kryptografia wizualna" HorizontalAlignment="Center" FontSize="24"/>
+                <Label Content="Oryginalny obraz" HorizontalAlignment="Center" FontSize="16"/>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+                    <Label Content="Wczytaj obraz"/>
+                    <Button x:Name="OpenOriginalImageButton" Margin="20,0,0,0"
+                            Width="100" Height="26" Content="Otwórz obraz" Click="OpenOriginalImageButton_OnClick"/>
+                </StackPanel>
+                
+                <Image x:Name="OriginalImage"/>
+                <Label Content="Szyfrowanie" HorizontalAlignment="Center" FontSize="16"/>
+                <Button x:Name="EncryptImage" Width="100" Height="26" HorizontalAlignment="Left" Margin="0,20,0,20" Content="Zaszyfruj obraz" Click="EncryptImage_Click"/>
+                <Image x:Name="FirstImage" Margin="0, 20, 0, 20"/>
+                <Image x:Name="SecondImage" Margin="0, 20, 0, 20"/>
+                <Button x:Name="SaveDecryptedImagesToFile" IsEnabled="False" Content="Zapisz do pliku" Height="26" Width="100" HorizontalAlignment="Left" Margin="0, 20, 0, 20" Click="SaveDecryptedImagesToFile_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </Window>
