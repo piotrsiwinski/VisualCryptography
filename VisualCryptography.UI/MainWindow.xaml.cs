@@ -54,6 +54,13 @@ namespace VisualCryptography.UI
             {
                 SaveDecryptedImagesToFile.IsEnabled = true;
             }
+
+            //Test
+            var first = ((BitmapImage) FirstImage.Source)?.ConvertToBitmap();
+            var second = ((BitmapImage) SecondImage.Source)?.ConvertToBitmap();
+
+            var test = _algorithm.DecryptBitmap(new[] {first, second});
+            OriginalImageTest.Source = test.ToImageSource();
         }
 
         private void OpenOriginalImageButton_OnClick(object sender, RoutedEventArgs e)

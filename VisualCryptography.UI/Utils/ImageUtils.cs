@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media.Imaging;
@@ -32,6 +33,31 @@ namespace VisualCryptography.UI.Utils
                 return bitmapImage;
             }
         }
+
+        public static bool ContainsMatrix(this List<int[,]> list, int[,] matrix)
+        {
+            bool areEqals = true;
+            foreach (var m in list)
+            {
+                areEqals = true;
+                for (int i = 0; i < m.GetLength(0); i++)
+                {
+                    for (int j = 0; j < m.GetLength(1); j++)
+                    {
+                        if (m[i, j] != matrix[i, j])
+                        {
+                            areEqals = false;
+                        }
+                    }
+                }
+                if (areEqals)
+                    return true;
+                
+
+            }
+            return areEqals;
+        }
+
 
     }
 }
