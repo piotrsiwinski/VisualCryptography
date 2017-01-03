@@ -16,14 +16,33 @@
                     <Button x:Name="OpenOriginalImageButton" Margin="20,0,0,0"
                             Width="100" Height="26" Content="Otwórz obraz" Click="OpenOriginalImageButton_OnClick"/>
                 </StackPanel>
-                
-                <Image x:Name="OriginalImage" MaxHeight="480" MaxWidth="320" />
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Image x:Name="OriginalImage" MaxHeight="480" MaxWidth="320" />
+                </Border>
                 <Label Content="Szyfrowanie" HorizontalAlignment="Center" FontSize="16"/>
                 <Button x:Name="EncryptImage" Width="100" Height="26" HorizontalAlignment="Left" Margin="0,20,0,20" Content="Zaszyfruj obraz" Click="EncryptImage_Click"/>
-                <Image x:Name="FirstImage" Margin="0, 20, 0, 20" MaxHeight="480" MaxWidth="320" />
-                <Image x:Name="SecondImage" Margin="0, 20, 0, 20" MaxHeight="480" MaxWidth="320"/>
-                <Image x:Name="OriginalImageTest" Margin="0, 20, 0, 20" MaxHeight="480" MaxWidth="320"/>
-                <Button x:Name="SaveDecryptedImagesToFile" IsEnabled="False" Content="Zapisz do pliku" Height="26" Width="100" HorizontalAlignment="Left" Margin="0, 20, 0, 20" Click="SaveDecryptedImagesToFile_Click"/>
+                <Button x:Name="OpenSharedImages" Width="100" Height="26" HorizontalAlignment="Left" Margin="0,0,0,20" Content="Wczytaj udziały" Click="OpenSharedImages_OnClick"/>
+                
+                
+<!--                First Share-->
+                <Label Content="Udział 1"/>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="0, 20, 0, 20" VerticalAlignment="Top">
+                    <Image x:Name="FirstImage" MaxHeight="480" MaxWidth="320" />
+                </Border>
+                
+<!--                Second Share-->
+                <Label Content="Udział 2"/>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="0, 20, 0, 20" VerticalAlignment="Top">
+                    <Image x:Name="SecondImage" MaxHeight="480" MaxWidth="320"/>
+                </Border>
+                <Button x:Name="SaveDecryptedImagesToFile" IsEnabled="False" Content="Zapisz udziały do pliku" Height="26" Width="100" HorizontalAlignment="Left" Margin="0, 20, 0, 20" Click="SaveDecryptedImagesToFile_Click"/>
+                <Button x:Name="DecryptButton" IsEnabled="False"  Content="Odszyfruj" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="26" Click="DecryptButton_OnClick"/>
+<!--                    Original image after decryption-->
+                <Label Content="Oryginalny obraz"></Label>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="0, 20, 0, 20" VerticalAlignment="Top">
+                    <Image x:Name="OriginalImageTest" MaxHeight="480" MaxWidth="320"/>
+                </Border>
+                
             </StackPanel>
         </ScrollViewer>
 

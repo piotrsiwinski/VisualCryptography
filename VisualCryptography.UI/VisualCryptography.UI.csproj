@@ -55,8 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Algorithms\Abstract\IVisualCryptographyAlgorithm.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
-    <Compile Include="VisualCryptographyAlgorithm.cs" />
+    <Compile Include="Algorithms\VisualCryptographyAlgorithm.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
