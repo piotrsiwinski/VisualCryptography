@@ -45,7 +45,7 @@ namespace VisualCryptography.UI
                 return;
             }
             var original = (OriginalImage.Source as BitmapImage)?.ConvertToBitmap();
-            var result = _algorithm.EncryptBitmap(original);
+            var result = _algorithm.EncryptBitmap(original,2);
 
             FirstImage.Source = result[0].ToImageSource();
             SecondImage.Source = result[1].ToImageSource();
