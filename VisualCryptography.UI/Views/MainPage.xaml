@@ -1,0 +1,23 @@
+﻿<Page x:Class="VisualCryptography.UI.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisualCryptography.UI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" d:DesignWidth="768"
+      Background="White"
+      Title="MainPage"
+      >
+    <Grid>
+        <StackPanel>
+            <Label Content="Kryptografia wizualna" FontSize="24" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Dostępne operacje" HorizontalAlignment="Center" Margin="80,50,27,0" VerticalAlignment="Top" Width="148"/>
+            <Button x:Name="EncryptionButton" FontSize="16" Content="Szyfrowanie" Margin="0, 50, 0, 50"  VerticalAlignment="Top" Height="100" Width="200" Click="EncryptionButton_OnClick"/>
+            <Button x:Name="DecryptionButton" FontSize="16"  Content="Deszyfrowanie"  VerticalAlignment="Top" Height="100" Width="200" Click="DecryptionButton_OnClick" />
+        </StackPanel>
+        
+    </Grid>
+
+    
+</Page>

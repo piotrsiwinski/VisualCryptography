@@ -1,25 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Microsoft.Win32;
 using VisualCryptography.UI.Algorithms;
 using VisualCryptography.UI.Algorithms.Abstract;
 using VisualCryptography.UI.Utils;
 
-namespace VisualCryptography.UI
+namespace VisualCryptography.UI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EncryptionPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EncryptionPage : Page
     {
         private string _originalImagePath;
-        private const int GenerateImageCount= 2;
+        private const int GenerateImageCount = 2;
         private Bitmap[] _encryptedBitmaps;
         private readonly IVisualCryptographyAlgorithm _algorithm;
-
-        public MainWindow()
+        public EncryptionPage()
         {
             InitializeComponent();
             _algorithm = new VisualCryptographyAlgorithm();
@@ -33,7 +43,7 @@ namespace VisualCryptography.UI
                 return;
             }
             var original = (OriginalImage.Source as BitmapImage)?.ConvertToBitmap();
-            var result = _algorithm.EncryptBitmap(original,2);
+            var result = _algorithm.EncryptBitmap(original, 2);
 
             FirstImage.Source = result[0].ToImageSource();
             SecondImage.Source = result[1].ToImageSource();
@@ -41,15 +51,7 @@ namespace VisualCryptography.UI
             if (FirstImage.Source != null && SecondImage.Source != null)
             {
                 SaveDecryptedImagesToFile.IsEnabled = true;
-                DecryptButton.IsEnabled = true;
             }
-
-//            //Test
-//            var first = ((BitmapImage) FirstImage.Source)?.ConvertToBitmap();
-//            var second = ((BitmapImage) SecondImage.Source)?.ConvertToBitmap();
-//
-//            var test = _algorithm.DecryptBitmap(new[] {first, second});
-//            OriginalImageTest.Source = test.ToImageSource();
         }
 
         private void OpenOriginalImageButton_OnClick(object sender, RoutedEventArgs e)
@@ -60,8 +62,8 @@ namespace VisualCryptography.UI
                 {
                     Title = "Select a picture",
                     Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png"
+                             "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                             "Portable Network Graphic (*.png)|*.png"
                 };
 
                 if (openFileDialog.ShowDialog() != true) return;
@@ -80,13 +82,13 @@ namespace VisualCryptography.UI
             {
                 var firstImageBitmap = (FirstImage.Source as BitmapImage)?.ConvertToBitmap();
                 var secondImageBitmap = (SecondImage.Source as BitmapImage)?.ConvertToBitmap();
-                
+
                 var saveFileDialog = new SaveFileDialog
                 {
                     Title = "Select a picture",
                     Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png",
+                             "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                             "Portable Network Graphic (*.png)|*.png",
                     DefaultExt = "jpg"
                 };
 
@@ -110,31 +112,19 @@ namespace VisualCryptography.UI
                 {
                     Title = "Select a picture",
                     Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                         "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                         "Portable Network Graphic (*.png)|*.png"
+                             "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                             "Portable Network Graphic (*.png)|*.png"
                 };
 
                 if (openFileDialog.ShowDialog() != true) return;
                 FirstImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
                 if (openFileDialog.ShowDialog() != true) return;
                 SecondImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-
-                DecryptButton.IsEnabled = true;
             }
             catch (Exception exception)
             {
                 MessageBox.Show($"Nie udało się zapisać do pliku. Szczegóły błędu: {exception.Message}");
             }
-        }
-
-        private void DecryptButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            //Test
-            var first = ((BitmapImage)FirstImage.Source)?.ConvertToBitmap();
-            var second = ((BitmapImage)SecondImage.Source)?.ConvertToBitmap();
-
-            var test = _algorithm.DecryptBitmap(new[] { first, second });
-            OriginalImageTest.Source = test.ToImageSource();
         }
     }
 }

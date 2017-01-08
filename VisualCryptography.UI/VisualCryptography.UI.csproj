@@ -56,9 +56,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Algorithms\Abstract\IVisualCryptographyAlgorithm.cs" />
+    <Compile Include="Algorithms\VsCryptographyV2.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Algorithms\VisualCryptographyAlgorithm.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\DecryptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EncryptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -66,7 +79,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\DecryptionPage.xaml.cs">
+      <DependentUpon>DecryptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EncryptionPage.xaml.cs">
+      <DependentUpon>EncryptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
