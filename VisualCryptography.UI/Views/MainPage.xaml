@@ -13,8 +13,8 @@
         <StackPanel>
             <Label Content="Kryptografia wizualna" FontSize="24" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
             <Label Content="Dostępne operacje" HorizontalAlignment="Center" Margin="80,50,27,0" VerticalAlignment="Top" Width="148"/>
-            <Button x:Name="EncryptionButton" FontSize="16" Content="Szyfrowanie" Margin="0, 50, 0, 50"  VerticalAlignment="Top" Height="100" Width="200" Click="EncryptionButton_OnClick"/>
-            <Button x:Name="DecryptionButton" FontSize="16"  Content="Deszyfrowanie"  VerticalAlignment="Top" Height="100" Width="200" Click="DecryptionButton_OnClick" />
+            <Button x:Name="EncryptionButton" FontSize="16" Content="Ukrywanie obrazu" Margin="0, 50, 0, 50"  VerticalAlignment="Top" Height="100" Width="200" Click="EncryptionButton_OnClick"/>
+            <Button x:Name="DecryptionButton" FontSize="16"  Content="Łączenie obrazu"  VerticalAlignment="Top" Height="100" Width="200" Click="DecryptionButton_OnClick" />
         </StackPanel>
         
     </Grid>

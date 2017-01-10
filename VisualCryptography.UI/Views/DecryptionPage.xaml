@@ -28,7 +28,7 @@
                     <Image x:Name="SecondImage" MaxHeight="480" MaxWidth="320"/>
                 </Border>
                 
-                <Button x:Name="DecryptButton" IsEnabled="False"  Content="Odszyfruj" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="26" Click="DecryptButton_OnClick"/>
+                <Button x:Name="DecryptButton" IsEnabled="False"  Content="Połącz obrazy" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="26" Click="DecryptButton_OnClick"/>
                 <!--                    Original image after decryption-->
                 <Label Content="Oryginalny obraz"></Label>
                 <Border BorderThickness="1" BorderBrush="Black" Margin="0, 20, 0, 20" VerticalAlignment="Top">
